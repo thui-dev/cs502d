@@ -34,9 +34,15 @@ end
 
 
 function love.update(dt)
-    if love.keyboard.isDown('s') then
+    if love.keyboard.isDown('w') then
+        player1Y = player1Y + -PADDLE_SPEED * dt
+    elseif love.keyboard.isDown('s') then
         player1Y = player1Y + PADDLE_SPEED * dt
     end
+
+    if love.keyboard.isDown('up')
+    end
+
 end
 
 
@@ -76,3 +82,4 @@ function displayFPS()
     love.graphics.print('FPS: ' .. tostring(love.timer.getFPS()), 10, 10)
     love.graphics.setColor(255, 255, 255, 255)
 end
+
