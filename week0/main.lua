@@ -18,7 +18,7 @@ function love.load()
 
     love.window.setMode(WINDOW_WIDTH, WINDOW_HEIGHT, {
         resizable = false,
-        vsync = true,
+        vsync = false,
         fullscreen = false
     })
 
@@ -34,13 +34,19 @@ end
 
 
 function love.update(dt)
+
+    -- player 1 movement
     if love.keyboard.isDown('w') then
         player1Y = player1Y + -PADDLE_SPEED * dt
     elseif love.keyboard.isDown('s') then
         player1Y = player1Y + PADDLE_SPEED * dt
     end
 
-    if love.keyboard.isDown('up')
+    --player 2 movement
+    if love.keyboard.isDown('up') then
+        player2Y = player2Y + -PADDLE_SPEED * dt
+    elseif love.keyboard.isDown('down') then
+        player2Y = player2Y + PADDLE_SPEED * dt
     end
 
 end
@@ -64,7 +70,7 @@ function love.draw()
     love.graphics.rectangle('fill', 10, player1Y, 5, 20)
 
     --paddle 2
-    love.graphics.rectangle('fill', VIRTUAL_WIDTH-15, VIRTUAL_HEIGHT-30, 5, 20)
+    love.graphics.rectangle('fill', VIRTUAL_WIDTH-15, player2Y, 5, 20)
 
     --ball
     love.graphics.rectangle('fill', VIRTUAL_WIDTH / 2 - 2, VIRTUAL_HEIGHT / 2 - 2, 4, 4)
